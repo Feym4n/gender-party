@@ -23,10 +23,17 @@ npx serve .
 
 ## GitHub Pages
 
-1. Создайте репозиторий на GitHub.
-2. Загрузите файлы в корень (или в папку `docs/`).
-3. **Settings** → **Pages** → Source: ветка `main`, папка `/ (root)` или `/docs`.
-4. Сайт будет доступен по адресу `https://<username>.github.io/<repo>/`.
+Репозиторий: https://github.com/Feym4n/gender-party
+
+**Включить публикацию (один раз):**
+
+1. Откройте https://github.com/Feym4n/gender-party/settings/pages
+2. **Build and deployment** → **Source**: `Deploy from a branch`
+3. **Branch**: `master` → папка `/ (root)` → **Save**
+
+Через 1–2 минуты сайт будет доступен по адресу:
+
+**https://feym4n.github.io/gender-party/**
 
 Файл `.nojekyll` уже добавлен — GitHub не будет игнорировать папки с подчёркиванием.
 
