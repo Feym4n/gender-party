@@ -3,7 +3,9 @@ const CONFIG = {
   EVENT_ISO: '2026-06-16T15:00:00+03:00',
   RSVP_DEADLINE: '2026-06-01',
   WISHLIST_URL: 'https://ohmywishes.ru/users/8467213ad77f80f827245339/lists/376a1dae1d35c87673557284',
-  GAS_WEB_APP_URL: ''
+  // URL из «Развернуть → Веб-приложение», формат: .../macros/s/XXXX/exec
+  // НЕ ссылка на редактор script.google.com/.../edit
+  GAS_WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbwpQxvlBBD00x1WpmIO6elZ9EVXeHKA_Uz6eFRYUz2XJgmMrn-TfwVN0uoQYm01-Q5HZQ/exec'
 };
 
 const STORAGE_KEY = 'gp_rsvp_submitted';
@@ -109,23 +111,54 @@ function validateFormData(data) {
   return null;
 }
 
+function isValidGasUrl(url) {
+  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(url);
+}
+
 async function submitRsvp(data) {
-  if (!CONFIG.GAS_WEB_APP_URL) {
+  const url = CONFIG.GAS_WEB_APP_URL;
+
+  if (!url) {
     throw new Error('not_configured');
   }
 
-  const response = await fetch(CONFIG.GAS_WEB_APP_URL, {
+  if (!isValidGasUrl(url)) {
+    throw new Error('bad_url');
+  }
+
+  const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
+    redirect: 'follow',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(data)
   });
 
-  if (!response.ok) {
-    throw new Error('network');
+  if (response.status === 403) {
+    throw new Error('access_denied');
   }
 
-  return response.json();
+  return parseGasResponse_(response);
+}
+
+async function parseGasResponse_(response) {
+  const text = await response.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (parseErr) {
+    const match = text.match(/\{[\s\S]*\}/);
+    if (match) {
+      return JSON.parse(match[0]);
+    }
+  }
+
+  // Google Apps Script иногда отвечает редиректом, хотя запись уже прошла
+  if (response.ok || response.status === 0) {
+    return { ok: true };
+  }
+
+  throw new Error('network');
 }
 
 function initForm() {
@@ -178,11 +211,24 @@ function initForm() {
     } catch (err) {
       if (err.message === 'not_configured') {
         showFormMessage(
-          'Форма ещё не подключена к таблице. Укажите GAS_WEB_APP_URL в script.js.',
+          'Форма ещё не подключена. Укажите GAS_WEB_APP_URL в script.js.',
           'info'
         );
+      } else if (err.message === 'bad_url') {
+        showFormMessage(
+          'Неверный адрес таблицы. Нужен URL из «Развернуть → Веб-приложение» (…/macros/s/…/exec), не ссылка на редактор.',
+          'error'
+        );
+      } else if (err.message === 'access_denied') {
+        showFormMessage(
+          'Доступ закрыт (403). В Apps Script: Развернуть → Управление → изменить → «У кого есть доступ» = «Все», не «Только я».',
+          'error'
+        );
       } else {
-        showFormMessage('Ошибка сети. Проверьте интернет и попробуйте снова.', 'error');
+        showFormMessage(
+          'Не удалось отправить. Проверьте интернет и настройки развёртывания веб-приложения.',
+          'error'
+        );
       }
       submitBtn.disabled = false;
     }
