@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Приглашение на гендер-пати Ольги и Николая Мужжериных — 16 июня 2026">
+  <title>Гендер-пати — Оля и Коля</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Marck+Script&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <div class="deco deco--leaves-left" aria-hidden="true">
+      <img src="assets/images/leaves-top-left.svg" alt="">
+    </div>
+    <div class="deco deco--leaves-right" aria-hidden="true">
+      <img src="assets/images/leaves-top-right.svg" alt="">
+    </div>
+
+    <header class="hero">
+      <p class="hero__label">ГЕНДЕР-ПАТИ</p>
+      <p class="hero__hosts">Ольги и Николая Мужжериных</p>
+      <div class="hero__title-row">
+        <h1 class="hero__title">девочка или мальчик?</h1>
+        <img class="hero__raccoons" src="assets/images/hero-raccoons.svg" alt="" width="140" height="112">
+      </div>
+    </header>
+
+    <section class="section section--invite">
+      <p class="text-handwritten">
+        Дорогие родные и друзья! Приглашаем Вас на вечеринку где мы узнаем с вами пол нашего будущего ребенка!
+        Так же в этот день в том же месте состоится день рождения моей старшей сестры Лены!
+      </p>
+    </section>
+
+    <section class="section section--date">
+      <div class="date-block">
+        <div class="deco deco--balloons" aria-hidden="true">
+          <img src="assets/images/balloons.svg" alt="">
+        </div>
+        <p class="date-block__date">16.06 2026</p>
+        <p class="text-handwritten date-block__venue">
+          Место проведения: 2-я линия, 81, садовое товарищество «Лада».<br>
+          Ждем Вас в 15:00!
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--map">
+      <h2 class="section__heading">Место проведения</h2>
+      <p class="map__address">
+        <a href="https://yandex.ru/maps?whatshere%5Bpoint%5D=37.996123%2C59.172317&whatshere%5Bzoom%5D=18.5741&ll=37.99612299998179%2C59.17231699930221&z=18.5741" target="_blank" rel="noopener noreferrer">
+          2-я линия, 81, СНТ «Лада», Череповецкий муниципальный округ
+        </a>
+      </p>
+      <div class="map__embed">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=37.996123%2C59.172317&z=18&pt=37.996123%2C59.172317"
+          title="Карта — СНТ Лада"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <p class="map__link">
+        <a href="https://yandex.ru/maps?whatshere%5Bpoint%5D=37.996123%2C59.172317&whatshere%5Bzoom%5D=18.5741&ll=37.99612299998179%2C59.17231699930221&z=18.5741" target="_blank" rel="noopener noreferrer">
+          Открыть в Яндекс.Картах →
+        </a>
+      </p>
+    </section>
+
+    <section class="section section--wishlist">
+      <div class="deco deco--grass" aria-hidden="true">
+        <img src="assets/images/grass.svg" alt="">
+      </div>
+      <p class="text-handwritten">
+        На случай если вы захотите прийти с подарком, мы собрали
+        <a id="wishlist-link" class="link-underline" href="#" target="_blank" rel="noopener noreferrer">виш-лист</a>.
+      </p>
+      <div class="deco deco--divider" aria-hidden="true">
+        <img src="assets/images/divider-vine.svg" alt="">
+      </div>
+    </section>
+
+    <section class="section section--countdown">
+      <div class="deco deco--hearts" aria-hidden="true">
+        <img src="assets/images/hearts.svg" alt="">
+      </div>
+      <h2 class="section__heading section__heading--handwritten">До встречи осталось:</h2>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-days">00</span>
+          <span class="countdown__label">дней</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-hours">00</span>
+          <span class="countdown__label">часов</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-minutes">00</span>
+          <span class="countdown__label">минут</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-seconds">00</span>
+          <span class="countdown__label">секунд</span>
+        </div>
+      </div>
+      <p class="countdown__done hidden" id="countdown-done">Скоро встретимся!</p>
+    </section>
+
+    <section class="section section--rsvp">
+      <div class="rsvp__watermark" aria-hidden="true">
+        <img src="assets/images/hero-raccoons.svg" alt="">
+      </div>
+      <p class="text-handwritten rsvp__intro">
+        Вы так же можете подтвердить свое присутствие на празднике и проверить свою интуицию проголосовав какой пол ребенка.
+      </p>
+      <p class="rsvp__deadline" id="rsvp-deadline"></p>
+
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <div class="form-group">
+          <label for="firstName">Имя *</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" required placeholder="Ваше имя">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Фамилия *</label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" required placeholder="Ваша фамилия">
+        </div>
+        <fieldset class="form-group">
+          <legend>Вы придёте? *</legend>
+          <div class="radio-row">
+            <label class="radio-label">
+              <input type="radio" name="attendance" value="yes" required>
+              <span>Да, буду</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attendance" value="no">
+              <span>К сожалению, нет</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend>Ваш прогноз *</legend>
+          <div class="radio-row">
+            <label class="radio-label">
+              <input type="radio" name="genderVote" value="boy" required>
+              <span>Мальчик</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="genderVote" value="girl">
+              <span>Девочка</span>
+            </label>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-submit" id="submit-btn">Отправить</button>
+        <p class="form-message hidden" id="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p class="text-handwritten footer__text">С любовью от Оли и Коли Мужжериных</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
