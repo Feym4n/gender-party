@@ -75,20 +75,22 @@ a {
 
 .site-deco--leaves-left {
   top: 14.5rem;
-  left: max(0px, calc(var(--content-edge) - 3rem));
-  width: clamp(9rem, calc(var(--content-edge) + 7rem), 13.5rem);
+  left: 0;
+  width: 11rem;
 }
 
 .site-deco--leaves-right {
   top: 19rem;
-  right: max(0px, calc(var(--content-edge) - 2.5rem));
-  width: clamp(8.5rem, calc(var(--content-edge) + 6.5rem), 12.5rem);
+  right: 0;
+  left: auto;
+  width: 10rem;
 }
 
 .site-deco--vine-top {
   top: 0;
   left: 50%;
-  width: 100vw;
+  width: 18rem;
+  max-width: 92vw;
   transform: translateX(-50%) translateY(-10%);
   z-index: 1;
   line-height: 0;
@@ -239,6 +241,7 @@ a {
 }
 
 .section--map {
+  margin-top: -0.15rem;
   margin-bottom: 2rem;
 }
 
@@ -261,13 +264,6 @@ a {
   text-align: center;
   margin: 0 0 0.65rem;
   color: var(--text);
-}
-
-.section__heading--venue {
-  font-size: calc(1.5rem + var(--font-extra));
-  letter-spacing: 0.05em;
-  -webkit-text-stroke: 0.45px currentColor;
-  paint-order: stroke fill;
 }
 
 .section__heading--handwritten {
@@ -333,8 +329,9 @@ a {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: clamp(22rem, 100vw, 40rem);
-  max-width: none;
+  width: 24rem;
+  max-width: calc(100vw - 0.5rem);
+  height: auto;
   transform: translate(-50%, -50%);
   opacity: 0.85;
   z-index: 0;
@@ -364,38 +361,38 @@ a {
 }
 
 .date-block__venue {
-  max-width: 22rem;
   margin: 0.15rem auto 0.45rem;
+  padding: 0 0.25rem;
 }
 
-.date-block__venue-line {
-  font-size: calc(1.22rem + var(--font-extra));
-  font-weight: 400;
-  line-height: 1.22;
-  margin: 0;
+.date-block__venue-link {
+  display: inline-block;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   -webkit-text-stroke: 0;
 }
 
+.date-block__venue-line1,
+.date-block__venue-line2 {
+  display: block;
+  white-space: nowrap;
+}
+
+.date-block__venue-link:hover {
+  color: var(--text-muted);
+}
+
 .date-block__time {
-  font-size: calc(1.68rem + var(--font-extra));
+  display: block;
+  margin-top: 0.08rem;
+  font-size: calc(1.68rem + var(--font-extra) + 4pt);
   line-height: 1.15;
-  margin: 0.15rem 0 0;
   -webkit-text-stroke: 0.55px currentColor;
   paint-order: stroke fill;
-}
-
-.map__address {
-  text-align: center;
-  margin: 0 0 0.65rem;
-  font-family: var(--font-sans);
-  font-size: calc(1.05rem + var(--font-extra));
-}
-
-.map__address a {
-  font-family: var(--font-sans);
-  color: var(--text-muted);
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 .map__embed {
@@ -410,21 +407,6 @@ a {
   width: 100%;
   height: 210px;
   border: 0;
-}
-
-.map__link {
-  text-align: center;
-  margin: 0.65rem 0 0;
-  font-size: calc(1.15rem + var(--font-extra));
-}
-
-.map__link a {
-  color: var(--text-muted);
-  text-decoration: none;
-}
-
-.map__link a:hover {
-  text-decoration: underline;
 }
 
 .countdown-area {
@@ -443,7 +425,7 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 0.3rem;
   flex-wrap: nowrap;
 }
 
@@ -451,12 +433,12 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 3.1rem;
+  min-width: 3.45rem;
 }
 
 .countdown__value {
   font-family: var(--font-hand);
-  font-size: clamp(calc(2rem + var(--font-extra)), 8.5vw, calc(2.45rem + var(--font-extra)));
+  font-size: clamp(calc(2.25rem + var(--font-extra)), 9.5vw, calc(2.75rem + var(--font-extra)));
   font-weight: 400;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -464,19 +446,19 @@ a {
 
 .countdown__label {
   font-family: var(--font-hand);
-  font-size: calc(0.72rem + var(--font-extra));
+  font-size: calc(0.82rem + var(--font-extra));
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-  margin-top: 0.3rem;
+  margin-top: 0.32rem;
 }
 
 .countdown__sep {
   font-family: var(--font-hand);
-  font-size: calc(1.85rem + var(--font-extra));
+  font-size: calc(2.05rem + var(--font-extra));
   font-weight: 400;
   line-height: 1;
-  padding-top: 0.1rem;
+  padding-top: 0.12rem;
 }
 
 .countdown__done {
