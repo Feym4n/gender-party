@@ -11,23 +11,29 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page">
-    <div class="deco deco--leaves-left" aria-hidden="true">
+  <div class="site">
+    <div class="site-deco site-deco--leaves-left" aria-hidden="true">
       <img src="assets/images/leaves-top-left.png" alt="">
     </div>
-    <div class="deco deco--leaves-right" aria-hidden="true">
+    <div class="site-deco site-deco--leaves-right" aria-hidden="true">
       <img src="assets/images/leaves-top-right.png" alt="">
     </div>
+    <div class="site-deco site-deco--vine-top" aria-hidden="true">
+      <img src="assets/images/divider-vine-top.png" alt="">
+    </div>
 
+    <main class="page">
     <header class="hero">
-      <p class="hero__label">ГЕНДЕР-ПАТИ</p>
-      <p class="hero__hosts">Ольги и Николая Мужжериных</p>
+      <div class="hero__brand">
+        <p class="hero__label">ГЕНДЕР-ПАТИ</p>
+        <p class="hero__hosts">Ольги и Николая Мужжериных</p>
+      </div>
       <div class="hero__title-row">
-        <h1 class="hero__title">
-          <span class="hero__title-line">девочка или</span>
-          <span class="hero__title-line">мальчик?</span>
-        </h1>
-        <img class="hero__raccoons" src="assets/images/hero-raccoons.png" alt="" width="148" height="152">
+        <div class="hero__copy">
+          <h1 class="hero__title hero__title--top">девочка или</h1>
+          <h2 class="hero__title hero__title--bottom">мальчик?</h2>
+        </div>
+        <img class="hero__raccoons" src="assets/images/hero-raccoons.png" alt="" width="172" height="177">
       </div>
     </header>
 
@@ -41,19 +47,24 @@
 
     <section class="section section--date">
       <div class="date-block">
-        <div class="deco deco--balloons" aria-hidden="true">
-          <img src="assets/images/balloons.png" alt="">
+        <div class="date-block__head">
+          <img class="date-block__balloons" src="assets/images/balloons.png" alt="" aria-hidden="true">
+          <p class="date-block__date">
+            <span class="date-block__date-line">16.06</span>
+            <span class="date-block__date-line">2026</span>
+          </p>
         </div>
-        <p class="date-block__date">16.06 2026</p>
-        <p class="text-handwritten date-block__venue">
-          Место проведения: 2-я линия, 81, садовое товарищество «Лада».<br>
-          Ждем Вас в 15:00!
-        </p>
+        <div class="date-block__venue">
+          <p class="text-handwritten date-block__venue-line">Место проведения: садовое</p>
+          <p class="text-handwritten date-block__venue-line">товарищество «Лада».</p>
+          <p class="text-handwritten date-block__venue-line">2-я линия, 81.</p>
+        </div>
+        <p class="text-handwritten date-block__time">Ждем Вас в 15:00!</p>
       </div>
     </section>
 
     <section class="section section--map">
-      <h2 class="section__heading">Место проведения</h2>
+      <h2 class="section__heading section__heading--venue">Место проведения:</h2>
       <p class="map__address">
         <a href="https://yandex.ru/maps?whatshere%5Bpoint%5D=37.996123%2C59.172317&whatshere%5Bzoom%5D=18.5741&ll=37.99612299998179%2C59.17231699930221&z=18.5741" target="_blank" rel="noopener noreferrer">
           2-я линия, 81, СНТ «Лада», Череповецкий муниципальный округ
@@ -122,13 +133,12 @@
     </section>
 
     <section class="section section--rsvp">
-      <div class="rsvp__watermark" aria-hidden="true">
+      <div class="rsvp__backdrop" aria-hidden="true">
         <img src="assets/images/watermark-raccoons.png" alt="">
       </div>
       <p class="text-handwritten rsvp__intro">
         Вы так же можете подтвердить свое присутствие на празднике и проверить свою интуицию проголосовав какой пол ребенка.
       </p>
-      <p class="rsvp__deadline" id="rsvp-deadline"></p>
 
       <form class="rsvp-form" id="rsvp-form" novalidate>
         <div class="form-group">
@@ -168,12 +178,10 @@
         <button type="submit" class="btn-submit" id="submit-btn">Отправить</button>
         <p class="form-message hidden" id="form-message" role="status"></p>
       </form>
+      <p class="text-handwritten rsvp__sign">С любовью от Оли и Коли Мужжериных</p>
     </section>
-
-    <footer class="footer">
-      <p class="text-handwritten footer__text">С любовью от Оли и Коли Мужжериных</p>
-    </footer>
-  </main>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

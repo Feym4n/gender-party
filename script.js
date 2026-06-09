@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 const CONFIG = {
   EVENT_ISO: '2026-06-16T15:00:00+03:00',
-  RSVP_DEADLINE: '2026-06-01',
   WISHLIST_URL: 'https://ohmywishes.ru/users/8467213ad77f80f827245339/lists/376a1dae1d35c87673557284',
   // URL из «Развернуть → Веб-приложение», формат: .../macros/s/XXXX/exec
   // НЕ ссылка на редактор script.google.com/.../edit
@@ -30,20 +29,6 @@ function initWishlist() {
     });
     link.title = 'Ссылка будет добавлена позже';
   }
-}
-
-function initRsvpDeadline() {
-  const el = document.getElementById('rsvp-deadline');
-  if (!el || !CONFIG.RSVP_DEADLINE) return; // нет на варианте с макетом-подложкой
-
-  const date = new Date(CONFIG.RSVP_DEADLINE + 'T23:59:59+03:00');
-  const formatted = date.toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  });
-
-  el.textContent = `Пожалуйста, подтвердите присутствие до ${formatted}.`;
 }
 
 function updateCountdown() {
@@ -239,7 +224,6 @@ function initForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initWishlist();
-  initRsvpDeadline();
   updateCountdown();
   setInterval(updateCountdown, 1000);
   initForm();
